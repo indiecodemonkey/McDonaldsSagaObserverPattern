@@ -48,9 +48,9 @@ namespace McDonaldsSagaObserverPattern
 
         private bool SagaIsDone()
         {
-            //if (Data.OrderList.Values.Any(x => false)) return false;
-            //return true;
-            return !Data.OrderList.Values.Any(x => false);
+            if (Data.OrderList.Values.Any(x => false)) return false;
+            return true;
+            //return !Data.OrderList.Values.Any(x => false);
         }
 
         public class SagaData : IContainSagaData

@@ -48,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Handlers\MakeFriesHandler.cs" />
+    <Compile Include="Handlers\MakeShakeHandler.cs" />
     <Compile Include="Messages\Coffee.cs" />
     <Compile Include="Messages\Drinks.cs" />
     <Compile Include="EndpointConfig.cs" />
