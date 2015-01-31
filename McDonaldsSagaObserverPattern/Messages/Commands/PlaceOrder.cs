@@ -3,7 +3,7 @@ using NServiceBus;
 
 namespace McDonaldsSagaObserverPattern.Messages.Commands
 {
-    public class PlaceOrder
+    public class PlaceOrder : ICommand
     {
         public Guid OrderId { get; set; }
         public Order Order { get; set; }

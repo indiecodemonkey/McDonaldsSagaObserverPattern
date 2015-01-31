@@ -4,7 +4,9 @@ using System.Linq;
 using McDonaldsSagaObserverPattern.Messages;
 using McDonaldsSagaObserverPattern.Messages.Commands;
 using McDonaldsSagaObserverPattern.Messages.Events;
+using McDonaldsSagaObserverPattern.Messages.InternalMessages;
 using NServiceBus;
+using NServiceBus.Logging;
 using NServiceBus.Saga;
 
 namespace McDonaldsSagaObserverPattern
@@ -14,8 +16,11 @@ namespace McDonaldsSagaObserverPattern
         IHandleMessages<FriesCompleted>, 
         IHandleMessages<ShakeCompleted>
     {
+        private static readonly ILog Log = LogManager.GetLogger(typeof(OrderSaga));
+
         public void Handle(PlaceOrder message)
         {
+            Log.Warn("order placed.");
             Data.OrderId = message.OrderId;
 
             if (message.Shake != null)
@@ -29,6 +34,7 @@ namespace McDonaldsSagaObserverPattern
                 Data.OrderList.Add(typeof(Fries), false);
                 Bus.Send(new MakeFries { OrderId = message.OrderId, Fries = message.Fries });
             }
+            Log.Warn("order sent to all stations.");
             //and so on for the rest of the menu items
         }
 
@@ -36,14 +42,20 @@ namespace McDonaldsSagaObserverPattern
         {
             Data.OrderList[typeof (Fries)] = true;
             if (SagaIsDone())
-                MarkAsComplete();
+                PublishOrderFinishedAndMarkSagaAsComplete();
         }
 
         public void Handle(ShakeCompleted message)
         {
             Data.OrderList[typeof(Shake)] = true;
             if (SagaIsDone())
-                MarkAsComplete();
+                PublishOrderFinishedAndMarkSagaAsComplete();
+        }
+
+        private void PublishOrderFinishedAndMarkSagaAsComplete()
+        {
+            Bus.Publish(new OrderReady { OrderId = Data.OrderId });
+            MarkAsComplete();
         }
 
         private bool SagaIsDone()
@@ -61,6 +73,7 @@ namespace McDonaldsSagaObserverPattern
 
             [Unique]
             public Guid OrderId { get; set; }
+            //do I need to new this up in the message tha starts the saga?
             public Dictionary<Type, bool> OrderList { get; set; }
         }
     }

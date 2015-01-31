@@ -1,8 +1,9 @@
 ﻿using System;
+using NServiceBus;
 
 namespace McDonaldsSagaObserverPattern.Messages.Events
 {
-    public class FriesCompleted
+    public class OrderReady : IEvent
     {
         public Guid OrderId { get; set; }
     }

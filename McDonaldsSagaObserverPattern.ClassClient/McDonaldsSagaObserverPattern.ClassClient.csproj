@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{66EA7A3C-9D55-4931-8B5C-A8E94ED89DE3}</ProjectGuid>
+    <ProjectGuid>{FF7390E5-3E72-4BB9-9B96-39626C19634E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>McDonaldsSagaObserverPattern</RootNamespace>
-    <AssemblyName>McDonaldsSagaObserverPattern</AssemblyName>
+    <RootNamespace>McDonaldsSagaObserverPattern.ClassClient</RootNamespace>
+    <AssemblyName>McDonaldsSagaObserverPattern.ClassClient</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -48,28 +48,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Handlers\MakeFriesHandler.cs" />
-    <Compile Include="Handlers\MakeShakeHandler.cs" />
-    <Compile Include="Messages\Coffee.cs" />
-    <Compile Include="Messages\Drinks.cs" />
     <Compile Include="EndpointConfig.cs" />
-    <Compile Include="Messages\Events\OrderReady.cs" />
-    <Compile Include="Messages\Fries.cs" />
-    <Compile Include="Messages\Commands\PlaceOrder.cs" />
-    <Compile Include="Messages\InternalMessages\FriesCompleted.cs" />
-    <Compile Include="Messages\Commands\MakeFries.cs" />
-    <Compile Include="Messages\Commands\MakeShake.cs" />
-    <Compile Include="Messages\InternalMessages\ShakeCompleted.cs" />
-    <Compile Include="OrderSaga.cs" />
+    <Compile Include="MessageSender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Messages\Sandwich.cs" />
-    <Compile Include="Messages\Shake.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\McDonaldsSagaObserverPattern\McDonaldsSagaObserverPattern.csproj">
+      <Project>{66ea7a3c-9d55-4931-8b5c-a8e94ed89de3}</Project>
+      <Name>McDonaldsSagaObserverPattern</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
