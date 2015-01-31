@@ -12,8 +12,11 @@ namespace McDonaldsSagaObserverPattern.ClassClient
         public void Start()
         {
             Console.WriteLine("Press 'Enter' to place an Order.To exit, Ctrl + C");
-            var placeOrder = new PlaceOrder { OrderId = Guid.NewGuid(), Fries = new Fries(), Shake = new Shake() };
-            Bus.Send(placeOrder);
+            while (Console.ReadLine() != null)
+            {
+                var placeOrder = new PlaceOrder { OrderId = Guid.NewGuid(), Fries = new Fries(), Shake = new Shake() };
+                Bus.Send(placeOrder);
+            }
         }
 
         public void Stop()

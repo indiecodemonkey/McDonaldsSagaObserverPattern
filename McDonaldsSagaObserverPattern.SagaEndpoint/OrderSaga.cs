@@ -18,9 +18,17 @@ namespace McDonaldsSagaObserverPattern.SagaEndpoint
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(OrderSaga));
 
+        public override void ConfigureHowToFindSaga()
+        {
+            ConfigureMapping<PlaceOrder>(m => m.OrderId).ToSaga(data => data.OrderId);
+            ConfigureMapping<FriesCompleted>(m => m.OrderId).ToSaga(data => data.OrderId);
+            ConfigureMapping<ShakeCompleted>(m => m.OrderId).ToSaga(data => data.OrderId);
+        }
+
         public void Handle(PlaceOrder message)
         {
             Log.Warn("order placed.");
+
             Data.OrderId = message.OrderId;
 
             if (message.Shake != null)
@@ -54,15 +62,18 @@ namespace McDonaldsSagaObserverPattern.SagaEndpoint
 
         private void PublishOrderFinishedAndMarkSagaAsComplete()
         {
-            Bus.Publish(new OrderReady { OrderId = Data.OrderId });
+            //Bus.Publish(new OrderReady { OrderId = Data.OrderId });
             MarkAsComplete();
         }
 
         private bool SagaIsDone()
         {
-            if (Data.OrderList.Values.Any(x => false)) return false;
-            return true;
-            //return !Data.OrderList.Values.Any(x => false);
+            //foreach (var value in Data.OrderList.Values)
+            //{
+            //    if (value == false)
+            //        return false;
+            //}
+            return Data.OrderList.Values.All(value => value != false);
         }
 
         public class SagaData : IContainSagaData
@@ -75,6 +86,11 @@ namespace McDonaldsSagaObserverPattern.SagaEndpoint
             public Guid OrderId { get; set; }
             //do I need to new this up in the message tha starts the saga?
             public Dictionary<Type, bool> OrderList { get; set; }
+
+            public SagaData()
+            {
+                OrderList = new Dictionary<Type, bool>();
+            }
         }
     }
 }
