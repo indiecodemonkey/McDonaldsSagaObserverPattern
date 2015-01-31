@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "McDonaldsSagaObserverPattern", "McDonaldsSagaObserverPattern\McDonaldsSagaObserverPattern.csproj", "{66EA7A3C-9D55-4931-8B5C-A8E94ED89DE3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "McDonaldsSagaObserverPattern.ClassClient", "McDonaldsSagaObserverPattern.ClassClient\McDonaldsSagaObserverPattern.ClassClient.csproj", "{FF7390E5-3E72-4BB9-9B96-39626C19634E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "McDonaldsSagaObserverPattern.Messages", "McDonaldsSagaObserverPattern.Messages\McDonaldsSagaObserverPattern.Messages.csproj", "{F02AD79A-8130-4B2B-8EEE-CCBAD557655D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "McDonaldsSagaObserverPattern.SagaEndpoint", "McDonaldsSagaObserverPattern.SagaEndpoint\McDonaldsSagaObserverPattern.SagaEndpoint.csproj", "{50282612-F2A3-43F2-B8BC-AFF9F0D7A24E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{66EA7A3C-9D55-4931-8B5C-A8E94ED89DE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{66EA7A3C-9D55-4931-8B5C-A8E94ED89DE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{66EA7A3C-9D55-4931-8B5C-A8E94ED89DE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{66EA7A3C-9D55-4931-8B5C-A8E94ED89DE3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FF7390E5-3E72-4BB9-9B96-39626C19634E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FF7390E5-3E72-4BB9-9B96-39626C19634E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF7390E5-3E72-4BB9-9B96-39626C19634E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF7390E5-3E72-4BB9-9B96-39626C19634E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F02AD79A-8130-4B2B-8EEE-CCBAD557655D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F02AD79A-8130-4B2B-8EEE-CCBAD557655D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F02AD79A-8130-4B2B-8EEE-CCBAD557655D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F02AD79A-8130-4B2B-8EEE-CCBAD557655D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50282612-F2A3-43F2-B8BC-AFF9F0D7A24E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50282612-F2A3-43F2-B8BC-AFF9F0D7A24E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50282612-F2A3-43F2-B8BC-AFF9F0D7A24E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50282612-F2A3-43F2-B8BC-AFF9F0D7A24E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

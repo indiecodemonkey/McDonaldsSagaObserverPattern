@@ -1,10 +1,10 @@
 ﻿using System.Threading;
-using McDonaldsSagaObserverPattern.Messages.Commands;
-using McDonaldsSagaObserverPattern.Messages.InternalMessages;
+using McDonaldsSagaObserverPattern.Messages.Messages.Commands;
+using McDonaldsSagaObserverPattern.Messages.Messages.InternalMessages;
 using NServiceBus;
 using NServiceBus.Logging;
 
-namespace McDonaldsSagaObserverPattern.Handlers
+namespace McDonaldsSagaObserverPattern.SagaEndpoint.Handlers
 {
     public class MakeShakeHandler : IHandleMessages<MakeShake>
     {

@@ -7,8 +7,8 @@
     <ProjectGuid>{66EA7A3C-9D55-4931-8B5C-A8E94ED89DE3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>McDonaldsSagaObserverPattern</RootNamespace>
-    <AssemblyName>McDonaldsSagaObserverPattern</AssemblyName>
+    <RootNamespace>McDonaldsSagaObserverPattern.SagaEndpoint</RootNamespace>
+    <AssemblyName>McDonaldsSagaObserverPattern.SagaEndpoint</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -50,26 +50,20 @@
   <ItemGroup>
     <Compile Include="Handlers\MakeFriesHandler.cs" />
     <Compile Include="Handlers\MakeShakeHandler.cs" />
-    <Compile Include="Messages\Coffee.cs" />
-    <Compile Include="Messages\Drinks.cs" />
     <Compile Include="EndpointConfig.cs" />
-    <Compile Include="Messages\Events\OrderReady.cs" />
-    <Compile Include="Messages\Fries.cs" />
-    <Compile Include="Messages\Commands\PlaceOrder.cs" />
-    <Compile Include="Messages\InternalMessages\FriesCompleted.cs" />
-    <Compile Include="Messages\Commands\MakeFries.cs" />
-    <Compile Include="Messages\Commands\MakeShake.cs" />
-    <Compile Include="Messages\InternalMessages\ShakeCompleted.cs" />
     <Compile Include="OrderSaga.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Messages\Sandwich.cs" />
-    <Compile Include="Messages\Shake.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\McDonaldsSagaObserverPattern.Messages\McDonaldsSagaObserverPattern.Messages.csproj">
+      <Project>{f02ad79a-8130-4b2b-8eee-ccbad557655d}</Project>
+      <Name>McDonaldsSagaObserverPattern.Messages</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

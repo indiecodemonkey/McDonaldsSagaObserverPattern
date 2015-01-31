@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("McDonaldsSagaObserverPattern")]
+[assembly: AssemblyTitle("McDonaldsSagaObserverPattern.SagaEndpoint")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("McDonaldsSagaObserverPattern")]
+[assembly: AssemblyProduct("McDonaldsSagaObserverPattern.SagaEndpoint")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

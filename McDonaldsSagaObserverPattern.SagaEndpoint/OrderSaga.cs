@@ -9,11 +9,11 @@ using NServiceBus;
 using NServiceBus.Logging;
 using NServiceBus.Saga;
 
-namespace McDonaldsSagaObserverPattern
+namespace McDonaldsSagaObserverPattern.SagaEndpoint
 {
-    public class OrderSaga : Saga<OrderSaga.SagaData>, 
+    public class OrderSaga : Saga<OrderSaga.SagaData>,
         IAmStartedByMessages<PlaceOrder>,
-        IHandleMessages<FriesCompleted>, 
+        IHandleMessages<FriesCompleted>,
         IHandleMessages<ShakeCompleted>
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(OrderSaga));
@@ -40,7 +40,7 @@ namespace McDonaldsSagaObserverPattern
 
         public void Handle(FriesCompleted message)
         {
-            Data.OrderList[typeof (Fries)] = true;
+            Data.OrderList[typeof(Fries)] = true;
             if (SagaIsDone())
                 PublishOrderFinishedAndMarkSagaAsComplete();
         }
