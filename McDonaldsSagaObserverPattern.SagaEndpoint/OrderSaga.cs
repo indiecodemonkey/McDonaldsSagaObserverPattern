@@ -33,17 +33,21 @@ namespace McDonaldsSagaObserverPattern.SagaEndpoint
 
             if (message.Shake != null)
             {
-                Data.OrderList.Add(typeof(Shake), false);
+                AddMenuItemToOrderList(message.Shake.GetType());
                 Bus.Send(new MakeShake { OrderId = message.OrderId, Shake = message.Shake });
             }
 
             if (message.Fries != null)
             {
-                Data.OrderList.Add(typeof(Fries), false);
+                AddMenuItemToOrderList(message.Fries.GetType());
                 Bus.Send(new MakeFries { OrderId = message.OrderId, Fries = message.Fries });
             }
             Log.Warn("order sent to all pertinenet stations.");
-            //and so on for the rest of the menu items
+        }
+
+        private void AddMenuItemToOrderList(Type type)
+        {
+            Data.OrderList.Add(type, false);
         }
 
         public void Handle(FriesCompleted message)
@@ -73,7 +77,9 @@ namespace McDonaldsSagaObserverPattern.SagaEndpoint
         
         private void PublishOrderFinishedAndMarkSagaAsComplete()
         {
+            Log.Warn("publishing OrderReady");
             Bus.Publish(new OrderReady { OrderId = Data.OrderId });
+            Log.Warn("marking Saga as complete");
             MarkAsComplete();
         }
         
