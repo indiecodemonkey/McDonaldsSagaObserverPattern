@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "McDonaldsSagaObserverPattern.Conventions", "McDonaldsSagaObserverPattern.Conventions\McDonaldsSagaObserverPattern.Conventions.csproj", "{1C98496F-7DFF-4F98-BA26-ABBAD1AE2A90}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "McDonaldsSagaObserverPattern.MenuStationEndpoint", "McDonaldsSagaObserverPattern.MenuStationEndpoint\McDonaldsSagaObserverPattern.MenuStationEndpoint.csproj", "{D5534D38-31E7-4B54-BA44-9CD8504F9DE5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{1C98496F-7DFF-4F98-BA26-ABBAD1AE2A90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C98496F-7DFF-4F98-BA26-ABBAD1AE2A90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C98496F-7DFF-4F98-BA26-ABBAD1AE2A90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5534D38-31E7-4B54-BA44-9CD8504F9DE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5534D38-31E7-4B54-BA44-9CD8504F9DE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5534D38-31E7-4B54-BA44-9CD8504F9DE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5534D38-31E7-4B54-BA44-9CD8504F9DE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

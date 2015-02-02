@@ -27,8 +27,13 @@ namespace McDonaldsSagaObserverPattern.SagaEndpoint.Handlers
         public void Handle(PlaceOrder message)
         {
             Log.Warn("order placed.");
-
             Data.OrderId = message.OrderId;
+
+            if (message.Fries != null)
+            {
+                AddMenuItemToOrderList("Fries");
+                Bus.Send(new MakeFries { OrderId = message.OrderId, Fries = message.Fries });
+            }
 
             if (message.Shake != null)
             {
@@ -36,11 +41,6 @@ namespace McDonaldsSagaObserverPattern.SagaEndpoint.Handlers
                 Bus.Send(new MakeShake { OrderId = message.OrderId, Shake = message.Shake });
             }
 
-            if (message.Fries != null)
-            {
-                AddMenuItemToOrderList("Fries");
-                Bus.Send(new MakeFries { OrderId = message.OrderId, Fries = message.Fries });
-            }
             Log.Warn("order sent to all pertinenet stations.");
         }
 
@@ -76,7 +76,7 @@ namespace McDonaldsSagaObserverPattern.SagaEndpoint.Handlers
 
         private void PublishOrderFinishedAndMarkSagaAsComplete()
         {
-            Log.Warn("publishing OrderReady");
+            Log.Warn("publishing OrderCompleted");
             Bus.Publish(new OrderCompleted { OrderId = Data.OrderId });
             Log.Warn("marking Saga as complete");
             MarkAsComplete();

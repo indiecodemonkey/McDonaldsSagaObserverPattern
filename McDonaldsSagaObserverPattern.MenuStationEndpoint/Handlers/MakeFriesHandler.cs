@@ -4,7 +4,7 @@ using McDonaldsSagaObserverPattern.Messages.InternalMessages;
 using NServiceBus;
 using NServiceBus.Logging;
 
-namespace McDonaldsSagaObserverPattern.SagaEndpoint.Handlers
+namespace McDonaldsSagaObserverPattern.MenuStationEndpoint.Handlers
 {
     public class MakeFriesHandler : IHandleMessages<MakeFries>
     {
