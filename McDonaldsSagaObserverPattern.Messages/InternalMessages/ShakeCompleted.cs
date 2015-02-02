@@ -1,9 +1,8 @@
 ﻿using System;
-using NServiceBus;
 
 namespace McDonaldsSagaObserverPattern.Messages.InternalMessages
 {
-    public class ShakeCompleted : IMessage
+    public class ShakeCompleted
     {
         public Guid OrderId { get; set; }
     }

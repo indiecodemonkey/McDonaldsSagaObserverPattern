@@ -30,9 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NServiceBus">
-      <HintPath>..\packages\NServiceBus.Interfaces.4.6.3\lib\net40\NServiceBus.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,16 +44,13 @@
     <Compile Include="Commands\MakeShake.cs" />
     <Compile Include="Commands\PlaceOrder.cs" />
     <Compile Include="Drinks.cs" />
-    <Compile Include="Events\OrderReady.cs" />
+    <Compile Include="Events\OrderCompleted.cs" />
     <Compile Include="Fries.cs" />
     <Compile Include="InternalMessages\FriesCompleted.cs" />
     <Compile Include="InternalMessages\ShakeCompleted.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sandwich.cs" />
     <Compile Include="Shake.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

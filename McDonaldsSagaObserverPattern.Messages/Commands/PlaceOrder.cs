@@ -1,9 +1,8 @@
 ﻿using System;
-using NServiceBus;
 
 namespace McDonaldsSagaObserverPattern.Messages.Commands
 {
-    public class PlaceOrder : ICommand
+    public class PlaceOrder
     {
         public Guid OrderId { get; set; }
         public Shake Shake { get; set; }

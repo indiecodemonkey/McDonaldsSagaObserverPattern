@@ -1,9 +1,8 @@
 ﻿using System;
-using NServiceBus;
 
 namespace McDonaldsSagaObserverPattern.Messages.InternalMessages
 {
-    public class FriesCompleted : IMessage
+    public class FriesCompleted
     {
         public Guid OrderId { get; set; }
     }

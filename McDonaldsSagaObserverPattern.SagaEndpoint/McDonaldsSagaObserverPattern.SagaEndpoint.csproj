@@ -59,6 +59,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\McDonaldsSagaObserverPattern.Conventions\McDonaldsSagaObserverPattern.Conventions.csproj">
+      <Project>{1c98496f-7dff-4f98-ba26-abbad1ae2a90}</Project>
+      <Name>McDonaldsSagaObserverPattern.Conventions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\McDonaldsSagaObserverPattern.Messages\McDonaldsSagaObserverPattern.Messages.csproj">
       <Project>{f02ad79a-8130-4b2b-8eee-ccbad557655d}</Project>
       <Name>McDonaldsSagaObserverPattern.Messages</Name>

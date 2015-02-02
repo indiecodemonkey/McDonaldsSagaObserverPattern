@@ -78,7 +78,7 @@ namespace McDonaldsSagaObserverPattern.SagaEndpoint.Handlers
         private void PublishOrderFinishedAndMarkSagaAsComplete()
         {
             Log.Warn("publishing OrderReady");
-            Bus.Publish(new OrderReady { OrderId = Data.OrderId });
+            Bus.Publish(new OrderCompleted { OrderId = Data.OrderId });
             Log.Warn("marking Saga as complete");
             MarkAsComplete();
         }
