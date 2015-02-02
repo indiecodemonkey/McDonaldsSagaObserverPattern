@@ -9,7 +9,7 @@ using NServiceBus;
 using NServiceBus.Logging;
 using NServiceBus.Saga;
 
-namespace McDonaldsSagaObserverPattern.SagaEndpoint
+namespace McDonaldsSagaObserverPattern.SagaEndpoint.Handlers
 {
     public class OrderSaga : Saga<OrderSaga.SagaData>,
         IAmStartedByMessages<PlaceOrder>,
