@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MakeFriesHandlerTests.cs" />
+    <Compile Include="MakeShakeHandlerTests.cs" />
     <Compile Include="OrderSagaTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -58,6 +60,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\McDonaldsSagaObserverPattern.MenuStationEndpoint\McDonaldsSagaObserverPattern.MenuStationEndpoint.csproj">
+      <Project>{d5534d38-31e7-4b54-ba44-9cd8504f9de5}</Project>
+      <Name>McDonaldsSagaObserverPattern.MenuStationEndpoint</Name>
+    </ProjectReference>
     <ProjectReference Include="..\McDonaldsSagaObserverPattern.Messages\McDonaldsSagaObserverPattern.Messages.csproj">
       <Project>{f02ad79a-8130-4b2b-8eee-ccbad557655d}</Project>
       <Name>McDonaldsSagaObserverPattern.Messages</Name>
