@@ -9,12 +9,15 @@ To run the solution:
 
 TODO:
 =====
+- break menu handlers out into their own endpoint
+- add rest of menu items?
+- add unit tests
+
+DONE
+====
 - move to unobtrusive mode
 - change Dictionary<Type, bool> to just a List<T>.
 	- instead of storing all the items in a dictionary, and setting the value to false (false meaning, "has been made"), instead, just store a list of items.
 	- add the list of items in the StartedBy handler.
 	- as each menu station reports back, remove the item from the list
 	- when teh list is empty, the order is ready
-- break menu handlers out into their own endpoint
-- add rest of menu items?
-- add unit tests

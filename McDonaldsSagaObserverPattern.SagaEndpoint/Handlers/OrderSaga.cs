@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using McDonaldsSagaObserverPattern.Messages;
 using McDonaldsSagaObserverPattern.Messages.Commands;
 using McDonaldsSagaObserverPattern.Messages.Events;
 using McDonaldsSagaObserverPattern.Messages.InternalMessages;
@@ -33,48 +32,48 @@ namespace McDonaldsSagaObserverPattern.SagaEndpoint.Handlers
 
             if (message.Shake != null)
             {
-                AddMenuItemToOrderList(message.Shake.GetType());
+                AddMenuItemToOrderList("Shake");
                 Bus.Send(new MakeShake { OrderId = message.OrderId, Shake = message.Shake });
             }
 
             if (message.Fries != null)
             {
-                AddMenuItemToOrderList(message.Fries.GetType());
+                AddMenuItemToOrderList("Fries");
                 Bus.Send(new MakeFries { OrderId = message.OrderId, Fries = message.Fries });
             }
             Log.Warn("order sent to all pertinenet stations.");
         }
 
-        private void AddMenuItemToOrderList(Type type)
-        {
-            Data.OrderList.Add(type, false);
-        }
-
         public void Handle(FriesCompleted message)
         {
             Log.Warn("handling FriesCompleted");
-            UpdateMenuItemInOrderListToTrue(typeof(Fries));
+            UpdateMenuItemInOrderListToTrue("Fries");
         }
 
         public void Handle(ShakeCompleted message)
         {
             Log.Warn("handling ShakeCompleted");
-            UpdateMenuItemInOrderListToTrue(typeof(Shake));
+            UpdateMenuItemInOrderListToTrue("Shake");
         }
 
-        private void UpdateMenuItemInOrderListToTrue(Type type)
+        private void AddMenuItemToOrderList(string menuItem)
         {
-            Log.Warn(string.Format("handling {0}", type.Name));
-            Data.OrderList[type] = true;
+            Data.OrderList.Add(menuItem);
+        }
+
+        private void UpdateMenuItemInOrderListToTrue(string menuItem)
+        {
+            Log.Warn(string.Format("updating menu item in order list for {0}", menuItem));
+            Data.OrderList.Remove(menuItem);
             if (SagaIsDone())
                 PublishOrderFinishedAndMarkSagaAsComplete();
         }
 
         private bool SagaIsDone()
         {
-            return Data.OrderList.Values.All(value => value != false);
+            return !Data.OrderList.Any();
         }
-        
+
         private void PublishOrderFinishedAndMarkSagaAsComplete()
         {
             Log.Warn("publishing OrderReady");
@@ -91,11 +90,11 @@ namespace McDonaldsSagaObserverPattern.SagaEndpoint.Handlers
 
             [Unique]
             public Guid OrderId { get; set; }
-            public Dictionary<Type, bool> OrderList { get; set; }
-
+            public List<string> OrderList { get; set; }
+            
             public SagaData()
             {
-                OrderList = new Dictionary<Type, bool>();
+                OrderList = new List<string>();
             }
         }
     }
