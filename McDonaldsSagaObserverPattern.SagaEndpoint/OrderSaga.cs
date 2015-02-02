@@ -48,6 +48,7 @@ namespace McDonaldsSagaObserverPattern.SagaEndpoint
 
         public void Handle(FriesCompleted message)
         {
+            Log.Warn("handling FriesCompleted");
             Data.OrderList[typeof(Fries)] = true;
             if (SagaIsDone())
                 PublishOrderFinishedAndMarkSagaAsComplete();
@@ -55,6 +56,7 @@ namespace McDonaldsSagaObserverPattern.SagaEndpoint
 
         public void Handle(ShakeCompleted message)
         {
+            Log.Warn("handling ShakeCompleted");
             Data.OrderList[typeof(Shake)] = true;
             if (SagaIsDone())
                 PublishOrderFinishedAndMarkSagaAsComplete();
@@ -62,7 +64,7 @@ namespace McDonaldsSagaObserverPattern.SagaEndpoint
 
         private void PublishOrderFinishedAndMarkSagaAsComplete()
         {
-            //Bus.Publish(new OrderReady { OrderId = Data.OrderId });
+            Bus.Publish(new OrderReady { OrderId = Data.OrderId });
             MarkAsComplete();
         }
 
@@ -73,6 +75,7 @@ namespace McDonaldsSagaObserverPattern.SagaEndpoint
             //    if (value == false)
             //        return false;
             //}
+            //return true;
             return Data.OrderList.Values.All(value => value != false);
         }
 
@@ -84,7 +87,6 @@ namespace McDonaldsSagaObserverPattern.SagaEndpoint
 
             [Unique]
             public Guid OrderId { get; set; }
-            //do I need to new this up in the message tha starts the saga?
             public Dictionary<Type, bool> OrderList { get; set; }
 
             public SagaData()
