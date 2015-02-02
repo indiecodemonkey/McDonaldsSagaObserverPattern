@@ -1,7 +1,7 @@
 A take the McDonald's Observer Saga from Jimmy Bogard's NSB 2014 presentation "Scaling NServiceBus": http://fast.wistia.net/embed/iframe/y56svovwnk?popover=true
 
 To run the solution:
-- mark .ClassClient and .SagaEndpoint to startup
+- mark .ClassClient, .SagaEndpoint and .MenuStationEndpoint for startup
 - hit F5
 - press any key to create an order
 - thread.sleeps used to make menu endpoints slower (but still faster than most McDonalds!)
@@ -9,12 +9,11 @@ To run the solution:
 
 TODO:
 =====
-- break menu handlers out into their own endpoint
-- add rest of menu items?
 - add unit tests
 
 DONE
 ====
+- break menu handlers out into their own endpoint
 - move to unobtrusive mode
 - change Dictionary<Type, bool> to just a List<T>.
 	- instead of storing all the items in a dictionary, and setting the value to false (false meaning, "has been made"), instead, just store a list of items.
