@@ -42,43 +42,41 @@ namespace McDonaldsSagaObserverPattern.SagaEndpoint
                 Data.OrderList.Add(typeof(Fries), false);
                 Bus.Send(new MakeFries { OrderId = message.OrderId, Fries = message.Fries });
             }
-            Log.Warn("order sent to all stations.");
+            Log.Warn("order sent to all pertinenet stations.");
             //and so on for the rest of the menu items
         }
 
         public void Handle(FriesCompleted message)
         {
             Log.Warn("handling FriesCompleted");
-            Data.OrderList[typeof(Fries)] = true;
-            if (SagaIsDone())
-                PublishOrderFinishedAndMarkSagaAsComplete();
+            UpdateMenuItemInOrderListToTrue(typeof(Fries));
         }
 
         public void Handle(ShakeCompleted message)
         {
             Log.Warn("handling ShakeCompleted");
-            Data.OrderList[typeof(Shake)] = true;
+            UpdateMenuItemInOrderListToTrue(typeof(Shake));
+        }
+
+        private void UpdateMenuItemInOrderListToTrue(Type type)
+        {
+            Log.Warn(string.Format("handling {0}", type.Name));
+            Data.OrderList[type] = true;
             if (SagaIsDone())
                 PublishOrderFinishedAndMarkSagaAsComplete();
         }
 
+        private bool SagaIsDone()
+        {
+            return Data.OrderList.Values.All(value => value != false);
+        }
+        
         private void PublishOrderFinishedAndMarkSagaAsComplete()
         {
             Bus.Publish(new OrderReady { OrderId = Data.OrderId });
             MarkAsComplete();
         }
-
-        private bool SagaIsDone()
-        {
-            //foreach (var value in Data.OrderList.Values)
-            //{
-            //    if (value == false)
-            //        return false;
-            //}
-            //return true;
-            return Data.OrderList.Values.All(value => value != false);
-        }
-
+        
         public class SagaData : IContainSagaData
         {
             public Guid Id { get; set; }
