@@ -9,10 +9,10 @@ To run the solution:
 
 TODO:
 =====
-- add unit tests
 
 DONE
 ====
+- add unit tests
 - break menu handlers out into their own endpoint
 - move to unobtrusive mode
 - change Dictionary<Type, bool> to just a List<T>.

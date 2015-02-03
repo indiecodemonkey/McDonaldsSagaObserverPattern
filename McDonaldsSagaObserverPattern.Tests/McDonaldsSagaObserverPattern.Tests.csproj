@@ -60,6 +60,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\McDonaldsSagaObserverPattern.Conventions\McDonaldsSagaObserverPattern.Conventions.csproj">
+      <Project>{1c98496f-7dff-4f98-ba26-abbad1ae2a90}</Project>
+      <Name>McDonaldsSagaObserverPattern.Conventions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\McDonaldsSagaObserverPattern.MenuStationEndpoint\McDonaldsSagaObserverPattern.MenuStationEndpoint.csproj">
       <Project>{d5534d38-31e7-4b54-ba44-9cd8504f9de5}</Project>
       <Name>McDonaldsSagaObserverPattern.MenuStationEndpoint</Name>
