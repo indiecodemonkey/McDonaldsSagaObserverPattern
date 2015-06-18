@@ -39,17 +39,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Coffee.cs" />
     <Compile Include="Commands\MakeFries.cs" />
     <Compile Include="Commands\MakeShake.cs" />
     <Compile Include="Commands\PlaceOrder.cs" />
-    <Compile Include="Drinks.cs" />
     <Compile Include="Events\OrderCompleted.cs" />
     <Compile Include="Fries.cs" />
     <Compile Include="InternalMessages\FriesCompleted.cs" />
     <Compile Include="InternalMessages\ShakeCompleted.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sandwich.cs" />
     <Compile Include="Shake.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
